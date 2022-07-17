@@ -3,11 +3,22 @@
   margin: 0;
   box-sizing: border-box;
 }
+body{
+  display: grid;
+}
+
 .game-container{
   width: 500px;
   height: 730px;
   position: absolute;
   left: 80px;
+  display: grid;
+}
+
+.start-game{
+  transform: translate(230px, 300px);
+  padding: 20px;
+
 }
 
 .sky {
