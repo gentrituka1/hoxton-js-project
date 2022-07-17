@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let birdLeft = 220
     let birdBottom = 200
     let gravity = 2
+    let gap = 500
     
     let obstacleBottom = 150
     let isGameOver = false
@@ -36,26 +37,33 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateObstacle(){
         let obstacleLeft = 500
         let obstacle = document.createElement('div')
-        if(!isGameOver)
+        let topObstacle = document.createElement('div')
+        if(!isGameOver){
         obstacle.className = "obstacle"
+        topObstacle.className = 'topObstacle'}
 
         let randomHeight = Math.floor(Math.random() * 60)
         obstacleBottom = randomHeight
 
-        obstacle.style.left = obstacleLeft + 'px'   
+        obstacle.style.left = obstacleLeft + 'px'  
+        topObstacle.style.left =  obstacleLeft + 'px' 
         obstacle.style.bottom = obstacleBottom + 'px'
+        topObstacle.style.bottom = obstacleBottom + gap + 'px'
         
-        gameDisplay?.append(obstacle)
+        gameDisplay?.append(obstacle,topObstacle)
+        
         function moveObstacle(){
             obstacleLeft -= 2
             obstacle.style.left = obstacleLeft + 'px'
+            topObstacle.style.left = obstacleLeft + 'px'
 
             if (obstacleLeft === -60){
                 clearInterval(timerId)
                 gameDisplay?.removeChild(obstacle)
+                gameDisplay?.removeChild(topObstacle)
             }    
 
-            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && birdBottom < obstacleBottom + 153 ||
+            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 230 ) || //we have to fix this
                 birdBottom === 0 ){
                 gameOver()
                 clearInterval(timerId)
