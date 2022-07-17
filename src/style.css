@@ -17,6 +17,7 @@
   height: 150px;
   position: absolute;
   top: 580px;
+  z-index: +1;
 }
 
 .bird{
