@@ -1,9 +1,11 @@
 import './style.css'
 
+
 document.addEventListener('DOMContentLoaded', () => {
     let bird = document.querySelector('.bird')
     let gameDisplay = document.querySelector('.game-container')
     let ground = document.querySelector('.ground')
+    let sky = document.querySelector('.sky')
 
     let birdLeft = 220
     let birdBottom = 200
@@ -39,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let topObstacle = document.createElement('div')
         if(!isGameOver){
         obstacle.className = "obstacle"
-        topObstacle.className = 'topObstacle'}
+        topObstacle.className = 'topObstacle'
+    }
 
         let randomHeight = Math.floor(Math.random() * 60)
         obstacleBottom = randomHeight
@@ -62,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameDisplay?.removeChild(topObstacle)
             }    
 
-            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200 ) || //we have to fix this
+            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200    ) || //we have to fix this
                 birdBottom === 0 ){
                 gameOver()
                 clearInterval(timerId)
@@ -79,7 +82,58 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(gameTimerId)
         isGameOver = true
         document.removeEventListener('keyup', control)
+        lostRender()
         
+    }
+
+    function lostRender() {
+        let sectionEl = document.createElement('section')
+        sectionEl.className = 'container'
+
+        let divEl1 = document.createElement('div')
+        divEl1.className = 'score-div'
+
+        let h1El1 = document.createElement('h1')
+        h1El1.className = 'text'
+        h1El1.textContent = 'SCORE'
+
+        let spanEl1 = document.createElement('span')
+        spanEl1.className = 'score-points'
+        spanEl1.textContent = '1'
+
+        let h1El2 = document.createElement('h1')
+        h1El2.className = 'text'
+        h1El2.textContent = 'BEST'
+
+        let spanEl2 = document.createElement('span')
+        spanEl2.className = 'score-points'
+        
+        spanEl2.textContent = '4'
+
+        divEl1.append(h1El1, spanEl1, h1El2, spanEl2)
+
+        let divEl2 = document.createElement('div')
+        divEl2.className = 'buttons-container'
+
+        let divEl3 = document.createElement('div')
+        divEl3.className = 'second-buttons-container'
+
+        let buttonEl1 = document.createElement('button')
+        buttonEl1.className = 'button'
+        buttonEl1.textContent = 'RESTART'
+
+        let buttonEl2 = document.createElement('button')
+        buttonEl2.className = 'button'
+        buttonEl2.textContent = 'SHARE'
+
+        //if we need leaderboard table button
+
+        divEl3.append(buttonEl1, buttonEl2)
+        divEl2.append(divEl3)
+        sectionEl.append(divEl1 , divEl2)
+
+        sky?.append(sectionEl)
+
     }
     
 })
