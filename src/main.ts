@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     function jump(){
         if(birdBottom < 480) birdBottom += 50
         bird.style.bottom = birdBottom + 'px'
@@ -63,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameDisplay?.removeChild(topObstacle)
             }    
 
-            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 230 ) || //we have to fix this
+            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200 ) || //we have to fix this
                 birdBottom === 0 ){
                 gameOver()
                 clearInterval(timerId)
