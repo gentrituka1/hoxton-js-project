@@ -22,6 +22,12 @@ body{
   padding: 20px;
 
 }*/
+.score{
+  position: absolute;
+  left: 15px;
+  top: 15px; 
+  z-index: 100;
+}
 
 .sky {
   background-image: url('/src/assets/sky.png');
