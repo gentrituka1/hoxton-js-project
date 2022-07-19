@@ -152,7 +152,7 @@ function lostRender() {
 
     let buttonEl2 = document.createElement("button");
     buttonEl2.className = "button";
-    buttonEl2.textContent = "SHARE";
+    buttonEl2.textContent = "LEADERBOARD";
 
     //if we need leaderboard table button
 
