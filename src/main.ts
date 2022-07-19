@@ -1,7 +1,7 @@
 import './style.css'
 
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
     let bird = document.querySelector('.bird')
     let gameDisplay = document.querySelector('.game-container')
     let ground = document.querySelector('.ground')
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameDisplay?.removeChild(topObstacle)
             }    
 
-            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200    ) || //we have to fix this
+            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200    ) || 
                 birdBottom === 0 ){
                 gameOver()
                 clearInterval(timerId)
@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function lostRender() {
+        if(isGameOver === true){
+        let gameContainer = document.querySelector('.game-container')
+
         let sectionEl = document.createElement('section')
         sectionEl.className = 'container'
 
@@ -121,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let buttonEl1 = document.createElement('button')
         buttonEl1.className = 'button'
         buttonEl1.textContent = 'RESTART'
+        buttonEl1.addEventListener('click', () => {
+            location.reload()
+        })
 
         let buttonEl2 = document.createElement('button')
         buttonEl2.className = 'button'
@@ -132,8 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
         divEl2.append(divEl3)
         sectionEl.append(divEl1 , divEl2)
 
-        sky?.append(sectionEl)
-
+        gameContainer.append(sectionEl)
+        }
     }
     
-})
+// })
