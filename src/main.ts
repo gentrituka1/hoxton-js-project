@@ -1,7 +1,11 @@
 import './style.css'
 
 
+<<<<<<< HEAD
 
+=======
+// document.addEventListener('DOMContentLoaded', () => {
+>>>>>>> bf8276f058ed24bded7ce6d514286c1305fb5f1b
     let bird = document.querySelector('.bird')
     let gameDisplay = document.querySelector('.game-container')
     let ground = document.querySelector('.ground')
@@ -68,7 +72,7 @@ import './style.css'
                 gameDisplay?.removeChild(topObstacle)
             }    
 
-            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200    ) || //we have to fix this
+            if(obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && (birdBottom < obstacleBottom + 153 || birdBottom > obstacleBottom + gap - 200    ) || 
                 birdBottom === 0 ){
                 gameOver()
                 clearInterval(timerId)
@@ -93,7 +97,13 @@ import './style.css'
     }
 
     function lostRender() {
+<<<<<<< HEAD
         if(isGameOver){
+=======
+        if(isGameOver === true){
+        let gameContainer = document.querySelector('.game-container')
+
+>>>>>>> bf8276f058ed24bded7ce6d514286c1305fb5f1b
         let sectionEl = document.createElement('section')
         sectionEl.className = 'container'
 
@@ -128,6 +138,9 @@ import './style.css'
         let buttonEl1 = document.createElement('button')
         buttonEl1.className = 'button'
         buttonEl1.textContent = 'RESTART'
+        buttonEl1.addEventListener('click', () => {
+            location.reload()
+        })
 
         let buttonEl2 = document.createElement('button')
         buttonEl2.className = 'button'
@@ -138,6 +151,7 @@ import './style.css'
         divEl3.append(buttonEl1, buttonEl2)
         divEl2.append(divEl3)
         sectionEl.append(divEl1 , divEl2)
+<<<<<<< HEAD
         
         
         sky?.append(sectionEl)
@@ -150,3 +164,11 @@ import './style.css'
     }
     
 
+=======
+
+        gameContainer.append(sectionEl)
+        }
+    }
+    
+// })
+>>>>>>> bf8276f058ed24bded7ce6d514286c1305fb5f1b
