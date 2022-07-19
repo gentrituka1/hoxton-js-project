@@ -49,6 +49,13 @@ body{
   width: 60px;
   height: 45px;
 }
+.bird-jump{
+  background-image: url('/src/assets/flappy-bird.png');
+  position: absolute;
+  width: 60px;
+  height: 45px;
+  
+}
 
 .obstacle{
   background-image: url("/src/assets/flappybird-pipe.png");

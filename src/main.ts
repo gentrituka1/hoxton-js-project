@@ -1,7 +1,7 @@
 import './style.css'
 
 
-document.addEventListener('DOMContentLoaded', () => {
+
     let bird = document.querySelector('.bird')
     let gameDisplay = document.querySelector('.game-container')
     let ground = document.querySelector('.ground')
@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let birdBottom = 200
     let gravity = 2
     let gap = 500
-    
+    type Count = number 
+    let count : Count  = 0
     let obstacleBottom = 150
     let isGameOver = false
+    
 
     function startGame(){
         birdBottom -= gravity
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function jump(){
         if(birdBottom < 480) birdBottom += 50
+        bird.className = 'bird-jump'
         bird.style.bottom = birdBottom + 'px'
     }
 
@@ -70,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameOver()
                 clearInterval(timerId)
             }
+            if (obstacleLeft < 220 && obstacleLeft > 217) {
+               countPoints()
+            }
         }
+
         let timerId = setInterval(moveObstacle, 20)
         if (!isGameOver) setTimeout(generateObstacle, 3000)
     }
@@ -80,13 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function gameOver() {
         clearInterval(gameTimerId)
-        isGameOver = true
         document.removeEventListener('keyup', control)
         lostRender()
-        
+        isGameOver = true
     }
 
     function lostRender() {
+        if(isGameOver){
         let sectionEl = document.createElement('section')
         sectionEl.className = 'container'
 
@@ -99,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let spanEl1 = document.createElement('span')
         spanEl1.className = 'score-points'
-        spanEl1.textContent = '1'
+        spanEl1.textContent = count
 
         let h1El2 = document.createElement('h1')
         h1El2.className = 'text'
@@ -131,9 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
         divEl3.append(buttonEl1, buttonEl2)
         divEl2.append(divEl3)
         sectionEl.append(divEl1 , divEl2)
-
+        
+        
         sky?.append(sectionEl)
+      }
+    }
 
+    function countPoints() {  
+            count++
+            console.log(count)
     }
     
-})
+
