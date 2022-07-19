@@ -39,7 +39,7 @@ function jump() {
 document.addEventListener("keyup", control);
 
 function generateObstacle() {
-    // if(isGameOver) return
+    if(isGameOver) return
     console.log(`generate obstacle`)
   let obstacleLeft = 500;
   let obstacle = document.createElement("div");
