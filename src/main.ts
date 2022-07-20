@@ -22,6 +22,7 @@ function startGame() {
   bird.style.bottom = birdBottom + "px";
   bird.style.left = birdLeft + "px";
 }
+
 let gameTimerId = setInterval(startGame, 20);
 
 function control(event: any) {
@@ -108,6 +109,19 @@ function gameOver() {
     localStorage.bestScore = count;
   }
 
+}
+
+function renderUsername(){
+    let username = document.createElement("input");
+    username.className = "username";
+    username.placeholder = "Enter your username";
+    username.addEventListener('submit', function(event){
+        event.preventDefault();
+        let username = document.querySelector(".username");;
+        localStorage.username = username?.ariaValueText;
+        username.style.display = "none";
+    })
+    gameContainer.append(username);
 }
 
 function lostRender() {
