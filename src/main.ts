@@ -84,7 +84,7 @@ function generateObstacle() {
             clearInterval(timerId);
             gameOver();
         }
-        if (obstacleLeft < 220 && obstacleLeft > 216) {
+        if (obstacleLeft < 220 && obstacleLeft > 213) {
             countPoints();
         }
     }
@@ -100,16 +100,18 @@ generateObstacle();
 
 function gameOver() {
     if (isGameOver) return
+    
     console.log(`game over`)
     clearInterval(gameTimerId);
     clearTimeout(obstacleTimeoutID);
     document.removeEventListener("keyup", control);
     isGameOver = true;
-    lostRender();
     if (count > bestScore) {
-        bestScore = count;
-        localStorage.bestScore = count;
-    }
+      bestScore = count;
+      localStorage.bestScore = count;
+  }
+    lostRender();
+    
     
 }
 
