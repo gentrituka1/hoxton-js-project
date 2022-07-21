@@ -162,3 +162,13 @@ body{
   gap: 2rem;
   justify-content: center;
 }
+.username{
+  font-family: 'pixellari';
+  width: fit-content;
+  font-size: 35px;
+  color: #fcfdfb;
+  padding: 5px;
+  background-color: #e86101;
+  border: 5px solid #fcfdfb;
+  box-shadow: 0px 3px 0px 9px #533000;
+}
