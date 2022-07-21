@@ -189,7 +189,6 @@ function renderLeaderboard() {
     restartLeaderboard.className = "restart-button";
     restartLeaderboard.textContent = "Restart Leaderboard";
     restartLeaderboard.addEventListener("click", function(){
-      // loop the json array and delete all items
       
       for(let element of leaderboardArray){
         fetch('http://localhost:4000/leaderboard/' + element.id, {
